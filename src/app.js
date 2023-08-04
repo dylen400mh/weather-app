@@ -37,7 +37,7 @@ const App = (() => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const location = e.target.querySelector("input").value;
-    getWeatherData(location);
+    if (location) getWeatherData(location);
   });
 
   return { getWeatherData };
