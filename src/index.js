@@ -1,3 +1,4 @@
 import App from "./app";
 
-App.getWeatherData("london")
+App.getWeatherData("london");
+
