@@ -1,4 +1,6 @@
 const App = (() => {
+  const form = document.querySelector("form");
+
   async function fetchData(location) {
     try {
       const response = await fetch(
@@ -31,6 +33,12 @@ const App = (() => {
   function getLocation(data) {
     return data.location;
   }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const location = e.target.querySelector("input").value;
+    getWeatherData(location);
+  });
 
   return { getWeatherData };
 })();
