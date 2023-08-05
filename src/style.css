@@ -89,19 +89,13 @@ button:hover {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
   padding: 2rem 5rem;
-}
-
-#weather-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
   font-size: var(--lengthLg1);
   color: var(--colorText);
-  align-items: center;
+  text-align: center;
 }
 
 #condition,
@@ -120,8 +114,9 @@ button:hover {
 }
 
 #temperature {
-  font-size: var(--lengthLg2);
+  font-size: var(--lengthLg3);
   align-self: flex-end;
+  color: var(--colorPrimary);
 }
 
 .temp-condition-container {
@@ -136,11 +131,9 @@ button#toggle-units {
 }
 
 /* MEDIA QUERY */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   body {
     grid-template-columns: 1fr; /* Change grid layout to one column */
-    grid-template-rows: auto; /* Allow the rows to adjust as per content */
-    grid-auto-rows: auto auto 1fr;
   }
 
   .header {
