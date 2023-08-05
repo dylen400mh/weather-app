@@ -15,7 +15,7 @@ const DOM = (() => {
     input.value = "";
   }
 
-  function toggleError(showError, message="") {
+  function toggleError(showError, message = "") {
     if (showError) {
       errorMessage.textContent = message;
       errorMessage.style.display = "block";
@@ -24,7 +24,15 @@ const DOM = (() => {
     }
   }
 
+  function clearFields() {
+    resetInput();
+    toggleError(false);
+  }
+
   function updateDisplay(weatherData, unit) {
+    // clear existing fields
+    clearFields();
+
     const weather = weatherData.current;
     const { location } = weatherData;
 
@@ -49,7 +57,7 @@ const DOM = (() => {
     }
   }
 
-  return { resetInput, updateDisplay, toggleError };
+  return { updateDisplay, resetInput, toggleError };
 })();
 
 export default DOM;

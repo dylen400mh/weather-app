@@ -1,8 +1,11 @@
 import DOM from "./dom";
+import Location from "./location";
 
 const App = (() => {
   const form = document.querySelector("form");
+  const currentLocationButton = document.getElementById("current-location");
 
+  // gets weather data based on city/province/country or coordinates
   async function getWeatherData(location) {
     try {
       const response = await fetch(
@@ -21,14 +24,8 @@ const App = (() => {
     e.preventDefault();
     const location = e.target.querySelector("input").value;
     if (location) {
-      // reset input field
-      DOM.resetInput();
-
       getWeatherData(location).then((data) => {
         try {
-          // hide error message if there is one
-          DOM.toggleError(false);
-
           // update display
           DOM.updateDisplay(data, "metric");
         } catch {
@@ -37,6 +34,14 @@ const App = (() => {
         }
       });
     }
+  });
+
+  currentLocationButton.addEventListener("click", async () => {
+    const [latitude, longitude] = await Location.getCoordinates();
+
+    App.getWeatherData(`${latitude},${longitude}`).then((data) => {
+      DOM.updateDisplay(data, "metric");
+    });
   });
 
   return { getWeatherData };
