@@ -18,14 +18,6 @@ const App = (() => {
     }
   }
 
-  function getCurrentWeather(data) {
-    return data.current;
-  }
-
-  function getLocation(data) {
-    return data.location;
-  }
-
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const location = e.target.querySelector("input").value;
