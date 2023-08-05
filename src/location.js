@@ -8,10 +8,13 @@ const Location = (() => {
             const { latitude, longitude } = position.coords;
             resolve([latitude, longitude]);
           },
-          (error) => {
-            reject(error);
+          () => {
+            // Set resolve parameter to null if unable to get coordinates
+            resolve(null);
           }
         );
+      } else {
+        reject(new Error("Geolocation is not available in this browser."));
       }
     });
   }
