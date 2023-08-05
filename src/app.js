@@ -5,6 +5,7 @@ const App = (() => {
   const form = document.querySelector("form");
   const currentLocationButton = document.getElementById("current-location");
   const toggleUnitsButton = document.getElementById("toggle-units");
+  const temperatureContainer = document.getElementById("temperature");
   const location = document.getElementById("location");
 
   // units are set as metric by default
@@ -51,6 +52,13 @@ const App = (() => {
     const [latitude, longitude] = await Location.getCoordinates();
 
     App.getWeatherData(`${latitude},${longitude}`).then((data) => {
+      DOM.updateDisplay(data, units);
+    });
+  });
+
+  temperatureContainer.addEventListener("click", () => {
+    toggleUnits();
+    App.getWeatherData(location.textContent).then((data) => {
       DOM.updateDisplay(data, units);
     });
   });
