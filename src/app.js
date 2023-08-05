@@ -4,8 +4,19 @@ import Location from "./location";
 const App = (() => {
   const form = document.querySelector("form");
   const currentLocationButton = document.getElementById("current-location");
+  const toggleUnitsButton = document.getElementById("toggle-units");
+  const location = document.getElementById("location");
+
+  // units are set as metric by default
+  let units = "Metric";
+
+  // toggle units
+  function toggleUnits() {
+    units = units === "Metric" ? "Imperial" : "Metric";
+  }
 
   // gets weather data based on city/province/country or coordinates
+  // eslint-disable-next-line no-shadow
   async function getWeatherData(location) {
     try {
       const response = await fetch(
@@ -22,12 +33,12 @@ const App = (() => {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const location = e.target.querySelector("input").value;
-    if (location) {
-      getWeatherData(location).then((data) => {
+    const input = e.target.querySelector("input").value;
+    if (input) {
+      getWeatherData(input).then((data) => {
         try {
           // update display
-          DOM.updateDisplay(data, "metric");
+          DOM.updateDisplay(data, units);
         } catch {
           // display error message
           DOM.toggleError(true, data.error.message);
@@ -40,7 +51,14 @@ const App = (() => {
     const [latitude, longitude] = await Location.getCoordinates();
 
     App.getWeatherData(`${latitude},${longitude}`).then((data) => {
-      DOM.updateDisplay(data, "metric");
+      DOM.updateDisplay(data, units);
+    });
+  });
+
+  toggleUnitsButton.addEventListener("click", () => {
+    toggleUnits();
+    App.getWeatherData(location.textContent).then((data) => {
+      DOM.updateDisplay(data, units);
     });
   });
 
