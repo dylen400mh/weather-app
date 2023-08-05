@@ -1,6 +1,7 @@
 import App from "./app";
 import DOM from "./dom";
 import Location from "./location";
+import "./style.css";
 
 // get coordinates using GeoLocation API and use those coords to set default location on page load (units will be metric on default)
 Location.getCoordinates().then((coordinates) => {

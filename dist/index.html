@@ -6,29 +6,33 @@
     <title>Weather App</title>
   </head>
   <body>
-
     <div class="header">Weather</div>
 
-    <form novalidate>
-      <input placeholder="Enter Location" />
-      <div id="error"></div>
-      <button type="submit" id="submit">Submit</button>
-    </form>
+    <div class="lookup">
+      <form novalidate>
+        <input placeholder="Enter Location" />
+        <div id="error"></div>
+        <button type="submit" id="submit">Submit</button>
+      </form>
 
-    <button id="current-location">Check Current Location</button>
+      <button id="current-location">Check Current Location</button>
+      </div>
+    </div>
 
-    <button id="toggle-units"></button>
+    <div class="info">
+      <div id="weather-info">
+        <div id="location"></div>
+        <div id="temperature"></div>
+        <div id="condition"></div>
+        <div id="feels-like"></div>
+        <div id="humidity"></div>
+        <div id="wind"></div>
+        <div id="wind-direction"></div>
+        <div id="precipitation"></div>
+        <div id="last-updated"></div>
+      </div>
 
-    <div id="weather-info">
-      <div id="location"></div>
-      <div id="temperature"></div>
-      <div id="condition"></div>
-      <div id="feels-like"></div>
-      <div id="humidity"></div>
-      <div id="wind"></div>
-      <div id="wind-direction"></div>
-      <div id="precipitation"></div>
-      <div id="last-updated"></div>
+      <button id="toggle-units"></button>
     </div>
 
     <script src="main.js"></script>
