@@ -1,3 +1,5 @@
+import DOM from "./dom";
+
 const App = (() => {
   const form = document.querySelector("form");
 
@@ -8,6 +10,7 @@ const App = (() => {
         { mode: "cors" }
       );
       const data = await response.json();
+      console.log(data);
       return data;
     } catch (error) {
       console.error("Error fetching weather data:", error);
@@ -26,7 +29,15 @@ const App = (() => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const location = e.target.querySelector("input").value;
-    if (location) getWeatherData(location);
+    if (location) {
+      getWeatherData(location).then((data) => {
+        // update display
+        DOM.updateDisplay(data, "metric");
+
+        // reset input field
+        DOM.resetInput();
+      });
+    }
   });
 
   return { getWeatherData };
