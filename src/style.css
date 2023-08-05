@@ -137,7 +137,7 @@ button#toggle-units {
 }
 
 /* MEDIA QUERY */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   body {
     grid-template-columns: 1fr; /* Change grid layout to one column */
   }
