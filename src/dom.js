@@ -52,19 +52,23 @@ const DOM = (() => {
     windDirectionContainer.textContent = `Wind Direction: ${weather.wind_dir}`;
     lastUpdatedContainer.textContent = `Last Updated: ${weather.last_updated}`;
 
-    if (unit === "Metric") {
-      temperatureContainer.textContent = `${weather.temp_c} °C`;
-      windContainer.textContent = `Wind: ${weather.wind_kph} kph`;
-      feelsLikeContainer.textContent = `Feels Like: ${weather.feelslike_c} °C`;
-      precipitationContainer.textContent = `Precipitation: ${weather.precip_mm} mm`;
-    }
+    temperatureContainer.textContent =
+      unit === "Metric" ? `${weather.temp_c} °C` : `${weather.temp_f} °F`;
 
-    if (unit === "Imperial") {
-      temperatureContainer.textContent = `${weather.temp_f} °F`;
-      windContainer.textContent = `Wind: ${weather.wind_mph} mph`;
-      feelsLikeContainer.textContent = `Feels Like: ${weather.feelslike_f} °F`;
-      precipitationContainer.textContent = `Precipitation: ${weather.precip_in} in`;
-    }
+    windContainer.textContent =
+      unit === "Metric"
+        ? `Wind: ${weather.wind_kph} kph`
+        : `Wind: ${weather.wind_mph} mph`;
+
+    feelsLikeContainer.textContent =
+      unit === "Metric"
+        ? `Feels Like: ${weather.feelslike_c} °C`
+        : `Feels Like: ${weather.feelslike_f} °F`;
+
+    precipitationContainer.textContent =
+      unit === "Metric"
+        ? `Precipitation: ${weather.precip_mm} mm`
+        : `Precipitation: ${weather.precip_in} in`;
   }
 
   return { updateDisplay, resetInput, toggleError };
