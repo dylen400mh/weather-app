@@ -43,32 +43,31 @@ const DOM = (() => {
     // update toggle units button
     setToggleUnitsButtonText(unit);
 
-    const weather = weatherData.current;
-    const { location } = weatherData;
+    const { location, current } = weatherData;
 
     locationContainer.textContent = `${location.name}, ${location.region}, ${location.country}`;
-    conditionContainer.textContent = weather.condition.text;
-    humidityContainer.textContent = `Humidity: ${weather.humidity}`;
-    windDirectionContainer.textContent = `Wind Direction: ${weather.wind_dir}`;
-    lastUpdatedContainer.textContent = `Last Updated: ${weather.last_updated}`;
+    conditionContainer.textContent = current.condition.text;
+    humidityContainer.textContent = `Humidity: ${current.humidity}`;
+    windDirectionContainer.textContent = `Wind Direction: ${current.wind_dir}`;
+    lastUpdatedContainer.textContent = `Last Updated: ${current.last_updated}`;
 
     temperatureContainer.textContent =
-      unit === "Metric" ? `${weather.temp_c} °C` : `${weather.temp_f} °F`;
+      unit === "Metric" ? `${current.temp_c} °C` : `${current.temp_f} °F`;
 
     windContainer.textContent =
       unit === "Metric"
-        ? `Wind: ${weather.wind_kph} kph`
-        : `Wind: ${weather.wind_mph} mph`;
+        ? `Wind: ${current.wind_kph} kph`
+        : `Wind: ${current.wind_mph} mph`;
 
     feelsLikeContainer.textContent =
       unit === "Metric"
-        ? `Feels Like: ${weather.feelslike_c} °C`
-        : `Feels Like: ${weather.feelslike_f} °F`;
+        ? `Feels Like: ${current.feelslike_c} °C`
+        : `Feels Like: ${current.feelslike_f} °F`;
 
     precipitationContainer.textContent =
       unit === "Metric"
-        ? `Precipitation: ${weather.precip_mm} mm`
-        : `Precipitation: ${weather.precip_in} in`;
+        ? `Precipitation: ${current.precip_mm} mm`
+        : `Precipitation: ${current.precip_in} in`;
   }
 
   return { updateDisplay, resetInput, toggleError };
