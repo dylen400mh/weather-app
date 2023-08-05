@@ -1,6 +1,8 @@
+/* CSS VARIABLES */
 :root {
   --colorPrimary: rgb(0, 204, 255);
   --colorAccent: rgb(34, 71, 80);
+  --colorAccentHover: rgb(39, 110, 128);
   --colorGrey: #f2f5f5;
   --colorText: #565360;
   --colorLabel: #908e9b;
@@ -20,10 +22,12 @@ body {
   margin: 0;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+/* HEADER */
 .header {
   grid-column: span 2;
   grid-row: span 1;
@@ -33,6 +37,7 @@ body {
   color: var(--colorGrey);
 }
 
+/* LOOKUP CONTAINER */
 .lookup {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
@@ -42,13 +47,44 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+  padding: 2rem 5rem;
+}
+
+#error {
+  font-size: --var(--lengthSm1);
+  color: red;
 }
 
 form {
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
+input {
+  font-size: var(--lengthMd3);
+  padding: 0.75rem 1rem;
+  outline: none;
+  border: 2px solid var(--colorAccent);
+  border-radius: 10px;
+  padding-left: 0.5rem;
+}
+
+button {
+  font-size: var(--lengthMd3);
+  background: var(--colorAccent);
+  border: none;
+  color: var(--colorGrey);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  background: var(--colorAccentHover);
+}
+
+/* INFO CONTAINER */
 .info {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
@@ -56,10 +92,69 @@ form {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding: 2rem 5rem;
 }
 
 #weather-info {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  font-size: var(--lengthLg1);
+  color: var(--colorText);
+  align-items: center;
+}
+
+#condition,
+#location,
+#temperature {
+  color: var(--colorAccent);
+}
+
+#condition {
+  align-self: flex-start;
+}
+
+#location {
+  align-self: flex-start;
+  font-size: var(--lengthLg3);
+}
+
+#temperature {
+  font-size: var(--lengthLg2);
+  align-self: flex-end;
+}
+
+.temp-condition-container {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+button#toggle-units {
+  margin-top: 1rem;
+  width: 130px;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 600px) {
+  body {
+    grid-template-columns: 1fr; /* Change grid layout to one column */
+    grid-template-rows: auto; /* Allow the rows to adjust as per content */
+    grid-auto-rows: auto auto 1fr;
+  }
+
+  .header {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .lookup {
+    grid-column: 1 / 2; /* Change to span only one column */
+    grid-row: 2 / 3;
+  }
+
+  .info {
+    grid-column: 1 / 2; /* Change to span only one column */
+    grid-row: 3 / 4;
+  }
 }
