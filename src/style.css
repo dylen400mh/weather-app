@@ -117,6 +117,12 @@ button:hover {
   font-size: var(--lengthLg3);
   align-self: flex-end;
   color: var(--colorPrimary);
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+#temperature:hover {
+  background: var(--colorGrey);
 }
 
 .temp-condition-container {
