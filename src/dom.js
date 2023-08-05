@@ -9,18 +9,24 @@ const DOM = (() => {
   const windDirectionContainer = document.getElementById("wind-direction");
   const precipitationContainer = document.getElementById("precipitation");
   const lastUpdatedContainer = document.getElementById("last-updated");
+  const errorMessage = document.getElementById("error");
 
   function resetInput() {
     input.value = "";
   }
 
+  function toggleError(showError, message="") {
+    if (showError) {
+      errorMessage.textContent = message;
+      errorMessage.style.display = "block";
+    } else {
+      errorMessage.style.display = "none";
+    }
+  }
+
   function updateDisplay(weatherData, unit) {
     const weather = weatherData.current;
     const { location } = weatherData;
-
-    console.log(locationContainer);
-
-    console.log(`${location.name}, ${location.region}, ${location.country}`);
 
     locationContainer.textContent = `${location.name}, ${location.region}, ${location.country}`;
     conditionContainer.textContent = weather.condition.text;
@@ -43,7 +49,7 @@ const DOM = (() => {
     }
   }
 
-  return { resetInput, updateDisplay };
+  return { resetInput, updateDisplay, toggleError };
 })();
 
 export default DOM;

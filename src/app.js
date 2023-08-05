@@ -10,10 +10,9 @@ const App = (() => {
         { mode: "cors" }
       );
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
-      console.error("Error fetching weather data:", error);
+      DOM.toggleError(true, error.message);
       throw error;
     }
   }
@@ -22,12 +21,20 @@ const App = (() => {
     e.preventDefault();
     const location = e.target.querySelector("input").value;
     if (location) {
-      getWeatherData(location).then((data) => {
-        // update display
-        DOM.updateDisplay(data, "metric");
+      // reset input field
+      DOM.resetInput();
 
-        // reset input field
-        DOM.resetInput();
+      getWeatherData(location).then((data) => {
+        try {
+          // hide error message if there is one
+          DOM.toggleError(false);
+
+          // update display
+          DOM.updateDisplay(data, "metric");
+        } catch {
+          // display error message
+          DOM.toggleError(true, data.error.message);
+        }
       });
     }
   });
