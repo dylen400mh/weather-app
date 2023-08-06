@@ -47,7 +47,7 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  padding: 2rem 5rem;
+  padding: 2rem;
 }
 
 .error {
@@ -99,7 +99,7 @@ button:disabled {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem 5rem;
+  padding: 2rem;
   font-size: var(--lengthLg1);
   color: var(--colorText);
   text-align: center;
