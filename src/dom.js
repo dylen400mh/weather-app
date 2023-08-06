@@ -1,6 +1,7 @@
 const DOM = (() => {
   const input = document.querySelector("input");
   const locationContainer = document.getElementById("location");
+  const weatherImage = document.getElementById("weather-image");
   const temperatureContainer = document.getElementById("temperature");
   const conditionContainer = document.getElementById("condition");
   const feelsLikeContainer = document.getElementById("feels-like");
@@ -53,6 +54,10 @@ const DOM = (() => {
     // update info to display
     const { location, current } = weatherData;
 
+    // set weather images
+    weatherImage.src = current.condition.icon;
+
+    // set weather image text
     locationContainer.textContent = `${location.name}, ${location.region}, ${location.country}`;
     conditionContainer.textContent = current.condition.text;
     humidityContainer.textContent = `Humidity: ${current.humidity}`;

@@ -121,6 +121,14 @@ button:disabled {
   font-size: var(--lengthLg3);
 }
 
+#temperature-container {
+  display: flex;
+  align-self: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
 #temperature {
   font-size: var(--lengthLg3);
   align-self: flex-end;
