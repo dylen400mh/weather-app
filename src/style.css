@@ -69,6 +69,7 @@ input {
   border: 2px solid var(--colorAccent);
   border-radius: 10px;
   padding-left: 0.5rem;
+  max-width: 200px;
 }
 
 button {
@@ -87,6 +88,7 @@ button:hover {
 
 button:disabled {
   background: var(--colorDisabled);
+  cursor: not-allowed;
 }
 
 /* INFO CONTAINER */

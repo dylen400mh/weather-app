@@ -49,11 +49,49 @@ const App = (() => {
   });
 
   currentLocationButton.addEventListener("click", async () => {
-    const [latitude, longitude] = await Location.getCoordinates();
+    // get coordinates using GeoLocation API and use those coords to set default location on page load (units will be metric on default)
+    const coordinates = await Location.getCoordinates();
 
-    App.getWeatherData(`${latitude},${longitude}`).then((data) => {
-      DOM.updateDisplay(data, units);
-    });
+    // if coordinates were found, search with them, otherwise, disable button
+    if (coordinates) {
+      const [latitude, longitude] = [coordinates[0], coordinates[1]];
+
+      App.getWeatherData(`${latitude},${longitude}`).then((data) => {
+        DOM.updateDisplay(data, "Metric");
+      });
+    } else {
+      // disable location button and display location error
+      currentLocationButton.disabled = true;
+      DOM.toggleLocationError(true);
+
+      App.getWeatherData("toronto").then((data) => {
+        DOM.updateDisplay(data, "Metric");
+      });
+    }
+  });
+
+
+  // disables current location button if location is off
+  window.addEventListener("load", async () => {
+    // get coordinates using GeoLocation API and use those coords to set default location on page load (units will be metric on default)
+    const coordinates = await Location.getCoordinates();
+
+    // if coordinates were found, search with them, otherwise, disable button
+    if (coordinates) {
+      const [latitude, longitude] = [coordinates[0], coordinates[1]];
+
+      App.getWeatherData(`${latitude},${longitude}`).then((data) => {
+        DOM.updateDisplay(data, "Metric");
+      });
+    } else {
+      // disable location button and display location error
+      currentLocationButton.disabled = true;
+      DOM.toggleLocationError(true);
+
+      App.getWeatherData("toronto").then((data) => {
+        DOM.updateDisplay(data, "Metric");
+      });
+    }
   });
 
   temperatureContainer.addEventListener("click", () => {
