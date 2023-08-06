@@ -30,6 +30,7 @@ const DOM = (() => {
     locationError.style.display = showError ? "block" : "none";
   }
 
+  // resets input field and remove error message
   function clearFields() {
     resetInput();
     toggleFormError(false);
@@ -41,6 +42,7 @@ const DOM = (() => {
       selectedUnit === "Metric" ? "Imperial" : "Metric";
   }
 
+  // update display each time weather info is requested
   function updateDisplay(weatherData, unit) {
     // clear existing fields
     clearFields();
@@ -48,6 +50,7 @@ const DOM = (() => {
     // update toggle units button
     setToggleUnitsButtonText(unit);
 
+    // update info to display
     const { location, current } = weatherData;
 
     locationContainer.textContent = `${location.name}, ${location.region}, ${location.country}`;

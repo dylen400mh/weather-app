@@ -32,6 +32,7 @@ const App = (() => {
     }
   }
 
+  // form submission
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const input = e.target.querySelector("input").value;
@@ -48,6 +49,7 @@ const App = (() => {
     }
   });
 
+  // current location event
   currentLocationButton.addEventListener("click", async () => {
     // get coordinates using GeoLocation API and use those coords to set default location on page load (units will be metric on default)
     const coordinates = await Location.getCoordinates();
@@ -64,14 +66,14 @@ const App = (() => {
       currentLocationButton.disabled = true;
       DOM.toggleLocationError(true);
 
+      // set a default location
       App.getWeatherData("toronto").then((data) => {
         DOM.updateDisplay(data, "Metric");
       });
     }
   });
 
-
-  // disables current location button if location is off
+  // disables current location button if location is off (will be done on page load)
   window.addEventListener("load", async () => {
     // get coordinates using GeoLocation API and use those coords to set default location on page load (units will be metric on default)
     const coordinates = await Location.getCoordinates();
@@ -94,6 +96,7 @@ const App = (() => {
     }
   });
 
+  // events to toggle units
   temperatureContainer.addEventListener("click", () => {
     toggleUnits();
     App.getWeatherData(location.textContent).then((data) => {
