@@ -6,7 +6,7 @@ This project is a Weather Forecast site that allows users to search for a specif
 The Weather Forecast site enables users to input a location in the search form or click a "current location" button and fetch the weather information for that location. The weather data includes details such as temperature, weather description, and metrics on humidity, wind, and precipitation. The site allows users to toggle between Imperial and Metric units.
 
 ## Skills Demonstrated
-- Working with external APIs to fetch weather data based on user input.
+- Working with external APIs to fetch weather data based on user input or current location.
 - Handling user interactions by capturing and processing user input from the search form.
 - Processing JSON data received from the API to extract and display relevant weather information.
 - Implementing dynamic content updates on the webpage to show weather details based on user input and/or current location.
