@@ -32,9 +32,10 @@ body {
   grid-column: span 2;
   grid-row: span 1;
   font-size: var(--lengthLg3);
-  padding: 1.5rem 3rem;
+  padding: 1.5rem;
   background: var(--colorPrimary);
   color: var(--colorGrey);
+  text-align: center;
 }
 
 /* LOOKUP CONTAINER */
