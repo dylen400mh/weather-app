@@ -9,25 +9,30 @@ const DOM = (() => {
   const windDirectionContainer = document.getElementById("wind-direction");
   const precipitationContainer = document.getElementById("precipitation");
   const lastUpdatedContainer = document.getElementById("last-updated");
-  const errorMessage = document.getElementById("error");
+  const formError = document.getElementById("form-error");
   const toggleUnitsButton = document.getElementById("toggle-units");
+  const locationError = document.getElementById("location-error");
 
   function resetInput() {
     input.value = "";
   }
 
-  function toggleError(showError, message = "") {
+  function toggleFormError(showError, message = "") {
     if (showError) {
-      errorMessage.textContent = message;
-      errorMessage.style.display = "block";
+      formError.textContent = message;
+      formError.style.display = "block";
     } else {
-      errorMessage.style.display = "none";
+      formError.style.display = "none";
     }
+  }
+
+  function toggleLocationError(showError) {
+    locationError.style.display = showError ? "block" : "none";
   }
 
   function clearFields() {
     resetInput();
-    toggleError(false);
+    toggleFormError(false);
   }
 
   // toggle units button text should be opposite to what is currently selected
@@ -70,7 +75,7 @@ const DOM = (() => {
         : `Precipitation: ${current.precip_in} in`;
   }
 
-  return { updateDisplay, resetInput, toggleError };
+  return { updateDisplay, resetInput, toggleFormError, toggleLocationError };
 })();
 
 export default DOM;

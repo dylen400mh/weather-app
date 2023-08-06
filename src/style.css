@@ -50,7 +50,8 @@ body {
   padding: 2rem 5rem;
 }
 
-#error {
+.error {
+  display: none;
   font-size: --var(--lengthSm1);
   color: red;
 }
@@ -82,6 +83,10 @@ button {
 button:hover {
   cursor: pointer;
   background: var(--colorAccentHover);
+}
+
+button:disabled {
+  background: var(--colorDisabled);
 }
 
 /* INFO CONTAINER */

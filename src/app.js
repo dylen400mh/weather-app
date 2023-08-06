@@ -27,7 +27,7 @@ const App = (() => {
       const data = await response.json();
       return data;
     } catch (error) {
-      DOM.toggleError(true, error.message);
+      DOM.toggleFormError(true, error.message);
       throw error;
     }
   }
@@ -42,7 +42,7 @@ const App = (() => {
           DOM.updateDisplay(data, units);
         } catch {
           // display error message
-          DOM.toggleError(true, data.error.message);
+          DOM.toggleFormError(true, data.error.message);
         }
       });
     }
