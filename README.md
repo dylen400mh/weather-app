@@ -1,5 +1,7 @@
 # Weather Forecast App
 
+[LIVE DEMO](https://dylen400mh.github.io/weather-app/)
+
 ## Project Overview
 This project is a Weather Forecast site that allows users to search for a specific location and view the weather information. The weather data is fetched using WeatherAPI. The main objectives of this project are to demonstrate skills in working with APIs, handling user input, processing JSON data, and dynamically updating the webpage.
 
